@@ -1,0 +1,33 @@
+<div class="addTaskDiv">
+    <div>
+      <h4 class="addTaskH2">Add Task Here</h4>
+    </div>
+    <div>
+        <input class="inputDesc" #description placeholder="enter task description" />
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary" (click)=addData(description.value)>ADD TASK</button>
+    </div>
+  </div>
+<div class="viewTaskDiv">
+    <div>
+        <h4 class="viewTaskH2">View Task Here</h4>
+      </div>
+      <div>
+        <table class="table table-striped " style="widows: 100%;">
+          <tr>
+            
+            <th>Description</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr class="trow" *ngFor="let d of taskData;">
+          <td style="width:50%">{{d.taskDescription}}</td>  
+          <td style="width:30%">{{d.status}}</td>  
+          <td><button class="btn btn-danger" (click)=deleteData(d.taskID)>Delete</button></td>
+          <td><button *ngIf="d.status!='Complete'" class="btn btn-success" (click)=changeStatus(d.taskID,d.status)>Complete Task</button></td>
+        </tr>
+        </table>
+      </div>
+</div>
